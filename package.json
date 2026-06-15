@@ -11,7 +11,9 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "multer": "^2.0.2",
-    "sharp": "^0.35.1",
+    "sharp": "^0.35.1"
+  },
+  "optionalDependencies": {
     "@img/sharp-linux-x64": "^0.35.1",
     "@img/sharp-linux-arm64": "^0.35.1"
   },
