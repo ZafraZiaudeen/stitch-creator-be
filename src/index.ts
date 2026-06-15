@@ -12,7 +12,17 @@ const upload = multer({
   limits: { fileSize: 30 * 1024 * 1024 },
 });
 
-app.use(cors({ origin: true }));
+const allowedOrigins: (string | RegExp)[] = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  "http://localhost:4173",
+  /\.vercel\.app$/, // Allow any Vercel preview/production deployments
+];
+if (process.env.FRONTEND_URL) {
+  allowedOrigins.push(process.env.FRONTEND_URL);
+}
+
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json({ limit: "2mb" }));
 
 app.get("/health", (_req, res) => {
@@ -51,6 +61,10 @@ app.use(
 );
 
 const port = Number(process.env.PORT ?? 4100);
-app.listen(port, () => {
-  console.log(`stitch-creator backend listening on http://127.0.0.1:${port}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(`stitch-creator backend listening on http://127.0.0.1:${port}`);
+  });
+}
+
+export default app;
