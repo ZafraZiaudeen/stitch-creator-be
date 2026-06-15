@@ -4,7 +4,7 @@ import multer from "multer";
 import {
   generatePatternFromImage,
   parseGenerateSettings,
-} from "./pattern-engine.ts";
+} from "./pattern-engine.js";
 
 const app = express();
 const upload = multer({

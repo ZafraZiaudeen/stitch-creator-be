@@ -1,11 +1,11 @@
 import sharp from "sharp";
-import { DMC_COLORS } from "./data/dmc.ts";
-import { ciede2000, rgbToLab, type Lab } from "./color/lab.ts";
+import { DMC_COLORS } from "./data/dmc.js";
+import { ciede2000, rgbToLab, type Lab } from "./color/lab.js";
 import type {
   GeneratedPattern,
   GenerateSettings,
   PatternPaletteEntry,
-} from "./types.ts";
+} from "./types.js";
 
 const SYMBOLS = [
   "●",
